@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
@@ -24,6 +27,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Test with pytest
+      if: github.event_name == 'push'
       run: |
         pip install pytest pytest-cov
         pytest app/tests/test_main.py
