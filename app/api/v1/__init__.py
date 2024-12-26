@@ -10,7 +10,7 @@ async def health_check():
 
 @router.get("/info")
 async def info():
-    return {"info": "1.0.0"}
+    return {"app_version": "1.0.0"}
 
 # Include the v1 router
 router.include_router(yolo_router, prefix="/yolo", tags=["Detect"])
