@@ -8,5 +8,9 @@ router = APIRouter()
 async def health_check():
     return {"status": "ok"}
 
+@router.get("/info")
+async def info():
+    return {"info": "1.0.0"}
+
 # Include the v1 router
 router.include_router(yolo_router, prefix="/yolo", tags=["Detect"])

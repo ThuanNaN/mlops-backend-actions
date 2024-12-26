@@ -52,3 +52,23 @@ jobs:
         with:
           push: true
           tags: thuannan/fastapi-backend:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: SSH to EC2
+      uses: appleboy/ssh-action@v1.2.0
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_PEM_KEY }}
+
+        # envs: |
+        #   DOCKERHUB_USERNAME=${{ vars.DOCKERHUB_USERNAME }}
+        #   DOCKERHUB_TOKEN=${{ secrets.DOCKERHUB_TOKEN }}
+
+        script_path: scripts/script.sh
