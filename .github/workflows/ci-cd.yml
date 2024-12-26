@@ -51,6 +51,8 @@ jobs:
         with:
           push: true
           tags: thuannan/fastapi-backend:latest
+          cache-from: type=registry,ref=thuannan/fastapi-backend:buildcache
+          cache-to: type=registry,ref=thuannan/fastapi-backend:buildcache,mode=max
 
   deploy:
     needs: build
