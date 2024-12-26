@@ -51,4 +51,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: aivn-mlops/fastapi-backend:latest
+          tags: thuannan/fastapi-backend:latest
